@@ -1,0 +1,12 @@
+-------Weps in vehicle-------
+function ulx.vehiclewepallow( calling_ply, target_plys )
+	for i=1, #target_plys do
+		target_plys[ i ]:SetAllowWeaponsInVehicle( true )
+	end
+
+	ulx.fancyLogAdmin( calling_ply, "Allowed the targets to use weapons in vehicles:", target_plys )
+end
+local vehiclewepallow = ulx.command( CATEGORY_NAME, "ulx vehiclewepallow", ulx.vehiclewepallow, "!vehiclewepallow" )
+vehiclewepallow:addParam{ type=ULib.cmds.PlayersArg }
+vehiclewepallow:defaultAccess( ULib.ACCESS_SUPERADMIN )
+vehiclewepallow:help( "Allows targets to use weapons in vehicles." )
