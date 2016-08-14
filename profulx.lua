@@ -1,4 +1,4 @@
-local CATEGORY_NAME = "ProfGeek1's Custom ULX Commands V1.05"
+local CATEGORY_NAME = "ProfGeek1's Custom ULX Commands V1.1"
 
 --------------SendToSky--------------------
 function ulx.sky( calling_ply, target_plys )
@@ -21,7 +21,7 @@ function ulx.fbring( calling_ply, target_plys )
 		RunConsoleCommand( "ulx", "send", target_plys[i]:Name(), calling_ply:Name() )
 	end
 	
-	ulx.fancyLogAdmin( calling_ply, "#A has brought and forzen player(s): #T", target_plys )
+	ulx.fancyLogAdmin( calling_ply, "#A has brought and frozen player(s): #T", target_plys )
 end
 local fbring = ulx.command( CATEGORY_NAME, "ulx fbring", ulx.fbring, "!fbring" )
 fbring:addParam{ type=ULib.cmds.PlayersArg }
