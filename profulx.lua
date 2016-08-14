@@ -1,4 +1,4 @@
-local CATEGORY_NAME = "ProfGeek1's Custom ULX Commands V1"
+local CATEGORY_NAME = "ProfGeek1's Custom ULX Commands V1.05"
 
 --------------SendToSky--------------------
 function ulx.sky( calling_ply, target_plys )
@@ -44,7 +44,7 @@ runspeed:help( "Set your target's run speed. - Made by ProfGeek1" )
 -----------SetJumpHeight------------------
 function ulx.jumpheight( calling_ply, target_plys, amount )
 	for i=1, #target_plys do
-		target_plys[ i ]:SetJumpHeight( amount )
+		target_plys[ i ]:SetJumpPower( amount )
 	end
 	ulx.fancyLogAdmin( calling_ply, "#A set the jump height of #T to #i", target_plys, amount )
 end
@@ -60,9 +60,22 @@ function ulx.vehiclewepallow( calling_ply, target_plys )
 		target_plys[ i ]:SetAllowWeaponsInVehicle( true )
 	end
 
-	ulx.fancyLogAdmin( calling_ply, "Allowed the targets to use weapons in vehicles:", target_plys )
+	ulx.fancyLogAdmin( calling_ply, "Allowed the target(s) to use weapons in vehicles:", target_plys )
 end
 local vehiclewepallow = ulx.command( CATEGORY_NAME, "ulx vehiclewepallow", ulx.vehiclewepallow, "!vehiclewepallow" )
 vehiclewepallow:addParam{ type=ULib.cmds.PlayersArg }
 vehiclewepallow:defaultAccess( ULib.ACCESS_SUPERADMIN )
 vehiclewepallow:help( "Allows targets to use weapons in vehicles. - Made by ProfGeek1" )
+
+-------No Weps in vehicle-------
+function ulx.vehiclewepdisallow( calling_ply, target_plys )
+	for i=1, #target_plys do
+		target_plys[ i ]:SetAllowWeaponsInVehicle( false )
+	end
+
+	ulx.fancyLogAdmin( calling_ply, "Disallowed the target(s) to use weapons in vehicles:", target_plys )
+end
+local vehiclewepallow = ulx.command( CATEGORY_NAME, "ulx vehiclewepdisallow", ulx.vehiclewepdisallow, "!vehiclewepdisallow" )
+vehiclewepallow:addParam{ type=ULib.cmds.PlayersArg }
+vehiclewepallow:defaultAccess( ULib.ACCESS_SUPERADMIN )
+vehiclewepallow:help( "Disallows targets to use weapons in vehicles. - Made by ProfGeek1" )
