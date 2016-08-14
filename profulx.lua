@@ -1,4 +1,4 @@
-local CATEGORY_NAME = "ProfGeek1's Custom ULX Commands V1.1"
+local CATEGORY_NAME = "ProfGeek1's Custom ULX Commands V1.15"
 
 --------------SendToSky--------------------
 function ulx.sky( calling_ply, target_plys )
@@ -52,7 +52,7 @@ local runspeed = ulx.command( CATEGORY_NAME, "ulx jumpheight", ulx.jumpheight, "
 runspeed:addParam{ type=ULib.cmds.PlayersArg }
 runspeed:addParam{ type=ULib.cmds.NumArg, min=1, max=2000, hint="runspeed", ULib.cmds.round }
 runspeed:defaultAccess( ULib.ACCESS_SUPERADMIN)
-runspeed:help( "Set your target's run speed. - Made by ProfGeek1" )
+runspeed:help( "Set your target's jump height. - Made by ProfGeek1" )
 
 -------Weps in vehicle-------
 function ulx.vehiclewepallow( calling_ply, target_plys )
