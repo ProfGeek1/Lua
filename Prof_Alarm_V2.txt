@@ -1,0 +1,69 @@
+@name Prof Alarm V2
+@inputs Pos1block:entity Pos2block:entity
+@outputs Fade Players:array PlayersLogged:array
+@persist Debounce CheckPl
+@trigger 
+#All credit to Smcelrea for the antispam.
+runOnTick(1)
+if(findCanQuery()){
+    findInBox(Pos1block:pos(),Pos2block:pos())
+    findIncludeClass("player")
+    Players = findToArray()
+}
+if(first()||duped()){
+    PlayersLogged[1,number] = 1
+    Checkpl = 1
+}
+
+for(I=1,Players:count()){
+    if(Players[I,entity]:steamID() == "STEAM_0:0:101134844" | Players[I,entity]:steamID() == "STEAM_0:0:77967423" | Players[I,entity]:steamID() == "STEAM_0:0:13441611" | Players[I,entity]:steamID() == "STEAM_0:1:74678877" | Players[I,entity]:steamID() == "STEAM_0:1:105149502"){
+            #Prof,morder,smc,blecky,uncle
+            #concmd("say |Prof Alarm| Welcome " +Players[I,entity]:name() +"!")  Welcome isn't antispammed
+            Fade = 1
+}}
+
+for(J=1,PlayersLogged:count()){   
+for(I=1,Players:count()){
+    if(PlayersLogged[J,entity]:isPlayer()&&PlayersLogged[J,entity]!=Players[I,entity]){
+        Checkpl = 0
+    }
+    else{
+        Checkpl = 1
+}}
+if(Checkpl == 0){
+        PlayersLogged:remove(J)
+        Checkpl = 0
+}
+}
+
+if(PlayersLogged:count() > 10){
+    PlayersLogged:pop()
+}
+for(I=1,Players:count()){
+    for(J=1,PlayersLogged:count()){ 
+    if(Players[I,entity] != PlayersLogged[J,entity] && Players[I,entity]:isPlayer() && Checkpl != 1){
+        Checkpl = 0
+    }
+    else{
+        Checkpl = 1
+    }
+}
+    if(Checkpl == 0){
+        PlayersLogged[PlayersLogged:count()+1,entity] = Players[I,entity]
+        Checkpl = 0
+    
+    if(Players[I,entity]:steamID() != "STEAM_0:0:101134844" && changed(Players[I,entity]) && Players[I,entity]:steamID() != "STEAM_0:0:77967423" && Players[I,entity]:steamID() != "STEAM_0:0:13441611" && Players[I,entity]:steamID() != "STEAM_0:1:74678877" && Players[I,entity]:steamID() != "STEAM_0:1:105149502"){
+            if(Players[I,entity]:isPlayer()){
+                concmd("say |Prof Alarm| Intuder Alert! " +Players[I,entity]:name() +" detected.")
+                #hint("|Prof Alarm| Intuder Alert! " +Players[I,entity]:name() +" detected.",1)
+                Fade = 0
+                timer("door",8000)
+                Debounce = 0
+                
+}}
+}}
+Checkpl = 1
+if(clk("door")){
+    Fade = !Fade
+}
+    
