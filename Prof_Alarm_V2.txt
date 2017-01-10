@@ -4,6 +4,8 @@
 @persist Debounce CheckPl
 @trigger 
 #All credit to Smcelrea for the antispam.
+#Just spawn the E2, and wire the e2 to 2 props
+#don't put the props too close to the door, or people will get stuck
 runOnTick(1)
 if(findCanQuery()){
     findInBox(Pos1block:pos(),Pos2block:pos())
